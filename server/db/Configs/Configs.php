@@ -2,7 +2,9 @@
 
 
 namespace Server\DataBase;
-
+require_once __DIR__ . '/../interface/db/Configs/iConfigs.php';
+require_once __DIR__ . '/Modeles/DbConnect.php';
+require_once __DIR__ . '/Modeles/DbNames.php';
 
 class Configs implements iConfigs
 {
@@ -28,11 +30,11 @@ class Configs implements iConfigs
         self::$ilsLoaded || self::load();
     }
 
-    static function load()
+    static function load(): void
     {
         self::$ilsLoaded = true;
         $model = self::loadConfigModel();
-
+		self::setConfigs($model);
     }
 
     static function setConfigs(array $model): void
@@ -43,7 +45,7 @@ class Configs implements iConfigs
 
     static function loadConfigModel(): array
     {
-        $file_name = '/ConfigModel/SqlConfig.ini';
-        return parse_ini_file($file_name);
+        $file = 'server/db/Configs/ConfigModel/SqlConfig.ini';
+        return parse_ini_file($file, true);
     }
 }

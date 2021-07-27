@@ -2,10 +2,12 @@
 
 
 namespace Server\DataBase;
-
+require_once __DIR__ . '/models/PublicationServices.php';
 
 class DataBase
 {
+	use PublicationServices;
+
     static private string $charset = 'utf8';
     static private \PDO $pdo;
 

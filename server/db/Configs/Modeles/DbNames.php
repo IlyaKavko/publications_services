@@ -2,7 +2,7 @@
 
 
 namespace Server\DataBase;
-
+require_once __DIR__ . '/../../interface/db/Configs/iDbNames.php';
 
 class DbNames implements iDbNames
 {
